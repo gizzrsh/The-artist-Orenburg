@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,7 +14,7 @@
             <div class="hero__inner container">
                 <h1 class="hero__title title">Немного о себе</h1>
                 <div class="hero__block">
-                    <img class="hero__img" src="./assets/img/author.png" alt="Изображение Анны Хитрой" width="488" height="458" loading="lazy">
+                    <img class="hero__img" src="./assets/img/author.png" alt="Изображение Анны Хитрой" width="488" height="458">
                     <div class="hero__content">
                         <h2 class="hero__about">О художнике</h2>
                         <p class="hero__biography">
@@ -40,7 +40,8 @@
                         height="450" 
                         frameborder="0" 
                         allowfullscreen="true"
-                        style="display: block;">
+                        style="display: block;"
+                        title="Yandex Map">
                     </iframe>
                 </div>  
             </div>

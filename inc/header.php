@@ -1,6 +1,6 @@
 <header class="header">
     <div class="header__inner container">
-        <a href="#" class="header__logo">Жанна Расуловна</a>
+        <a href="#" class="header__logo">Анна Хитрая</a>
         <nav class="header__menu">
             <ul class="header__menu-list">
                 <li class="header__menu-item">

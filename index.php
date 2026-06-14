@@ -6,9 +6,9 @@
     <link rel="stylesheet" href="./assets/css/normalize.css">
     <link rel="stylesheet" href="./assets/css/style.css">
     <title>Анна Хитрая - Оренбургская художница</title>
-    <link rel="icon" href="favicon.ico"> <!-- 32×32 -->
-    <link rel="apple-touch-icon" href="img/favicons/apple.png">  <!-- 180×180 -->
-    <link rel="manifest" href="manifest.webmanifest">
+    <link rel="icon" href="favicon.ico">
+    <link rel="apple-touch-icon" href="./img/favicons/apple.png">
+    <link rel="manifest" href="site.webmanifest">
 </head>
 <body>
     <?php include './inc/header.php' ?>

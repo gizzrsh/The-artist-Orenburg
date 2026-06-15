@@ -1,19 +1,20 @@
+<?php define('ROOT_PATH', $_SERVER['DOCUMENT_ROOT']) ?>
 <header class="header">
     <div class="header__inner container">
         <a href="/" class="header__logo">Анна Хитрая</a>
         <nav class="header__menu">
             <ul class="header__menu-list">
                 <li class="header__menu-item">
-                    <a href="/" class="header__menu-link" aria-label="Главная">Главная</a>
+                    <a href="<?php ROOT_PATH ?>" class="header__menu-link" aria-label="Главная">Главная</a>
                 </li>
                 <li class="header__menu-item">
-                    <a href="../showcase/" class="header__menu-link" aria-label="Витрина">Витрина</a>
+                    <a href="<?php ROOT_PATH ?>/showcase/" class="header__menu-link" aria-label="Витрина">Витрина</a>
                 </li>
                 <li class="header__menu-item">
-                    <a href="../education/" class="header__menu-link" aria-label="Обучение">Обучение</a>
+                    <a href="<?php ROOT_PATH ?>/education/" class="header__menu-link" aria-label="Обучение">Обучение</a>
                 </li>
                 <li class="header__menu-item">
-                    <a href="../events/" class="header__menu-link" aria-label="Мероприятия">Мероприятия</a>
+                    <a href="<?php ROOT_PATH ?>/events/" class="header__menu-link" aria-label="Мероприятия">Мероприятия</a>
                 </li>
             </ul>
         </nav>

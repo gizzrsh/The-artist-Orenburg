@@ -12,7 +12,7 @@
     <script src="./assets/js/script.js"></script>
 </head>
 <body>
-    <?php include './inc/header.php' ?>
+    <?php include $_SERVER['DOCUMENT_ROOT'] . '/inc/header.php' ?>
     <main class="main">
         <section class="hero">
             <div class="hero__inner container">
@@ -46,6 +46,6 @@
             </div>
         </section>
     </main>
-    <?php include './inc/footer.php'; ?>
+    <?php include $_SERVER['DOCUMENT_ROOT'] . '/inc/footer.php'; ?>
 </body>
 </html>

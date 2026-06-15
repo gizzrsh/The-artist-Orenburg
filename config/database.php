@@ -1,7 +1,7 @@
 <?php
 
 $pdo = new PDO(
-    'mysql:host=gizzatrg.beget.tech;dbname=gizzatrg_artsite;charset=utf8mb4',
+    'mysql:host=localhost;dbname=gizzatrg_artsite;charset=utf8mb4',
     'gizzatrg_artsite',
     'Dad102russs'
 );

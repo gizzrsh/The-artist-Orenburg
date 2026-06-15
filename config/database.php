@@ -1,10 +1,17 @@
 <?php
 
+// Localhost
 $pdo = new PDO(
-    'mysql:host=localhost;dbname=gizzatrg_artsite;charset=utf8mb4',
-    'gizzatrg_artsite',
-    'Dad102russs'
+    'mysql:host=localhost;dbname=artist_site;charset=utf8mb4',
+    'root',
+    'dad102rus'
 );
+// Beget Хостинг
+// $pdo = new PDO(
+//     'mysql:host=localhost;dbname=gizzatrg_artsite;charset=utf8mb4',
+//     'gizzatrg_artsite',
+//     'Dad102russs'
+// );
 
 $pdo->setAttribute(
     PDO::ATTR_ERRMODE,

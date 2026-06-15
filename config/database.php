@@ -2,8 +2,8 @@
 
 $pdo = new PDO(
     'mysql:host=gizzatrg.beget.tech;dbname=gizzatrg_artsite;charset=utf8mb4',
-    'localhost',
-    'Dad102rus'
+    'gizzatrg_artsite',
+    'Dad102russs'
 );
 
 $pdo->setAttribute(

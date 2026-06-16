@@ -85,7 +85,6 @@ body {
     margin-inline: auto;
     padding-inline: 1rem;
 }
-
 /*  */
 .title {
     text-align: center;
@@ -279,6 +278,7 @@ body {
         z-index: 4;
     }
     .header__menu {
+        display: none;
         width: 100%;
         height: 100vh;
         background-color: #fff;
@@ -286,6 +286,9 @@ body {
         top: 0;
         left: 0;
         z-index: 3;
+    }
+    .header__menu.active {
+        display: flex;
     }
     .header__menu-list {
         width: 100%;

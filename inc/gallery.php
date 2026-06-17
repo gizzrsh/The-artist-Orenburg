@@ -21,7 +21,7 @@ $artworks = $stmt->fetchAll();
                 <div class="gallery__cards">
                 <?php foreach ($artworks as $artwork): ?>
                     <div class="gallery__card">
-                        <img src="/<?= htmlspecialchars($artwork['image']) ?>" alt="<?= htmlspecialchars($artwork['title']) ?>" class="gallery__card-image" width="auto" height="300" loading="lazy">
+                        <img src="/<?= htmlspecialchars($artwork['image']) ?>" alt="<?= htmlspecialchars($artwork['title']) ?>" class="gallery__card-image" width="300" height="300" loading="lazy">
                         <h2 class="gallery__card-title">
                             <?= htmlspecialchars($artwork['title']) ?>
                         </h2>

@@ -76,9 +76,18 @@
     --font-inter: 'Inter';
 }
 body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
     background-color: var(--color-bg);
     font-family: var(--font-inter);
     color: var(--color-primary);
+}
+.main {
+    flex: 1;
+}
+.footer {
+    margin-top: auto;
 }
 .lock {
     overflow: hidden;
@@ -182,7 +191,7 @@ body {
 /* categories */
 .categories__cards {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(21rem, 1fr));
     gap: 2rem;
 }
 .categories__card {
@@ -256,7 +265,6 @@ body {
         0 15px 30px -5px rgba(0, 0, 0, 0.3), 
         0 0 20px rgba(0, 0, 0, 0.1);
     border: 0.5rem solid #8B4513;
-    /* border-radius: 1rem; */
     transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.4s
 }
 .gallery__card-image:hover {
@@ -267,18 +275,40 @@ body {
         0 25px 50px -12px rgba(0, 0, 0, 0.5), 
         0 0 30px rgba(139, 69, 19, 0.2);
 }
+.footer {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.footer__inner {
+    display: flex;
+    column-gap: 0.5rem;
+}
+.footer__link {
+    color: var(--color-primary);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+.footer__link:hover {
+    color: var(--color-primary-hover);
+}
 
+/* media */
 @media (width < 64rem) {
     .header__logo {
         font-size: 3rem;
     }
+    .hero__block {
+        column-gap: 2rem;
+    }
 }
 @media (width < 48rem) {
     .header__logo {
-        z-index: 4;
+        z-index: 7;
     }
     .header__burger {
-        z-index: 4;
+        z-index: 7;
     }
     .header__menu {
         display: none;
@@ -288,7 +318,7 @@ body {
         position: absolute;
         top: 0;
         left: 0;
-        z-index: 3;
+        z-index: 6;
     }
     .header__menu.active {
         display: flex;
@@ -307,6 +337,16 @@ body {
         padding: 0.5rem
     }
     .header__cart {
-        z-index: 4;
+        z-index: 7;
+    }
+    .hero__img {
+        width: 100%;
+    }
+    .hero__block {
+        grid-template-columns: auto;
+        row-gap: 2rem;
+    }
+    .categories__name {
+        font-size: 3rem;
     }
 }

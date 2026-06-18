@@ -16,5 +16,6 @@
     <header class="header">
         <div class="header__inner container">
             <a href="/admin" class="header__logo">Админ панель</a>
+            <a href="/" class="header__link">На сайт</a>
         </div>
     </header>

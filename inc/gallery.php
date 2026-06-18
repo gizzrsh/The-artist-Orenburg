@@ -4,7 +4,7 @@ require $_SERVER['DOCUMENT_ROOT'] . '/config/database.php';
 
 $pageTitle = $title;
 
-$sql = ('SELECT * FROM artworks WHERE category_id = :category_id');
+$sql = ('SELECT title, description, image FROM artworks WHERE category_id = :category_id and is_published = 1');
 $stmt = $pdo->prepare($sql);
 $stmt->execute(['category_id' => $category_id]);
 $artworks = $stmt->fetchAll();
@@ -17,7 +17,6 @@ $artworks = $stmt->fetchAll();
             <h1 class="gallery__title title">
                 <?= htmlspecialchars($title) ?>
             </h1>
-            <!-- Здесь будет карточки с товарами выгруженные из Базы данных по определенным категориями -->
                 <div class="gallery__cards">
                 <?php foreach ($artworks as $artwork): ?>
                     <div class="gallery__card">
@@ -28,7 +27,7 @@ $artworks = $stmt->fetchAll();
                         <p class="gallery__card-desc">
                             <?= htmlspecialchars($artwork['description']) ?>
                         </p>
-                        <button class="gallery__card-btn">Узнать стоимость</button>
+                        <button class="gallery__card-btn">Узнать цену</button>
                     </div>
                 <?php endforeach; ?>
                 </div>

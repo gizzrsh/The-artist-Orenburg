@@ -3,7 +3,7 @@
 <main class="main">
     <section class="hero">
         <div class="hero__inner container">
-            <h1 class="hero__title title">Немного о себе</h1>
+            <h1 class="hero__title title">Интерьерные картины и гипсовые панно – создаю уют в вашем доме</h1>
             <div class="hero__block">
                 <img class="hero__img" src="/assets/img/author.webp" alt="Изображение Анны Хитрой" width="488" height="458">
                 <div class="hero__content">
@@ -15,7 +15,7 @@
                         Анна - постоянная участница ярмарок, конкурсов и выставок. Её панно преобразили дома многих оренбуржцев. Каждый барельеф художницы уникален и неповторим как застывшее мгновение лета
                     </p>
                     <div class="hero__actions">
-                        <a href="/showcase/" class="hero__action btn">Витрина</a>
+                        <a href="/showcase/" class="hero__action btn">Посмотреть работы</a>
                         <a href="/events/" class="hero__action btn">Мероприятия</a>
                     </div>
                 </div>

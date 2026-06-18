@@ -29,13 +29,13 @@
                         <a href="/" class="header__menu-link">Главная</a>
                     </li>
                     <li class="header__menu-item">
-                        <a href="/showcase/" class="header__menu-link">Витрина</a>
+                        <a href="/showcase/" class="header__menu-link">Посмотреть работы</a>
                     </li>
                     <li class="header__menu-item">
-                        <a href="/education/" class="header__menu-link">Обучение</a>
+                        <span href="/education/" class="header__menu-link">Обучение</span>
                     </li>
                     <li class="header__menu-item">
-                        <a href="/events/" class="header__menu-link">Мероприятия</a>
+                        <span href="/events/" class="header__menu-link">Мероприятия</span>
                     </li>
                 </ul>
             </nav>

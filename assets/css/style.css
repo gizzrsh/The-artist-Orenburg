@@ -83,6 +83,9 @@ body {
     font-family: var(--font-inter);
     color: var(--color-primary);
 }
+td {
+    border: 1px solid black;
+}
 .main {
     flex: 1;
 }
@@ -100,8 +103,7 @@ body {
 /*  */
 .title {
     text-align: center;
-    font-family: var(--font-tygra);
-    font-size: 4rem;
+    font-size: 2.5rem;
     margin-bottom: 1rem;
 }
 .btn {

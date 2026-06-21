@@ -1,5 +1,4 @@
 <?php 
-require $_SERVER['DOCUMENT_ROOT'] . '/inc/functions.php';
 require $_SERVER['DOCUMENT_ROOT'] . '/config/database.php';
 
 $pageTitle = $title;

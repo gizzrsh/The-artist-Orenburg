@@ -1,0 +1,24 @@
+services:
+    php:
+        container_name: php
+        image: php
+        restart: always
+        build:
+            context: .
+            dockerfile: Dockerfile
+            target: base
+        ports:
+            - "${PORT}:80"
+        env_file:
+            - .env
+    db:
+        image: mariadb
+        restart: always
+        environment:
+            MARIADB_ROOT_PASSWORD: "${DB_PASS}"
+
+    adminer:
+        image: adminer
+        restart: always
+        ports:
+            - 8081:8080

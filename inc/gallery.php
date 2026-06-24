@@ -3,11 +3,9 @@ require $_SERVER['DOCUMENT_ROOT'] . '/config/database.php';
 
 $pageTitle = $title;
 
+$pdo = new Database();
 $sql = ('SELECT title, description, image FROM artworks WHERE category_id = :category_id and is_published = 1');
-$stmt = $pdo->prepare($sql);
-$stmt->execute(['category_id' => $category_id]);
-$artworks = $stmt->fetchAll();
-
+$artworks = $pdo->prepare($sql, ['category_id' => $category_id]);
 ?>
 <?php include $_SERVER['DOCUMENT_ROOT'] . '/inc/header.php' ?>
 <main class="main">

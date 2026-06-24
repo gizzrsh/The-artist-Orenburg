@@ -1,3 +1,5 @@
 .env
 /vendor/
 /uploads/
+config/artist_site.sql
+config/artist_site_old.sql

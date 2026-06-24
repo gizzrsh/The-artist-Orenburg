@@ -1,23 +1,41 @@
-<!-- 
-1. Принять данные из формы регистрации
-2. Валидация и обработка данных
-3. Загрузка данные в БЗ после проверки
-4. Обработать существующие ошибки
-5. Редирект на страницу авторизации
--->
-
 <?php
+session_start();
+
 require $_SERVER['DOCUMENT_ROOT'] . '/config/database.php';
 require $_SERVER['DOCUMENT_ROOT'] . '/inc/functions.php';
 
-function register()
-{
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $name  = trim($_POST['name']);
     $email = trim($_POST['email']);
-    $password = trim($_POST['password']);
+    $password = $_POST['password'];
+    
+    $errors = [];
+    if (!validateField($name)) {
+        $errors['name'] = 'Имя должно содержать от 3 до 21 символа';
+    }
+    if (!validateEmail($email)) {
+        $errors['email'] = 'Укажите настоящий email, например name@example.com';
+    }
+    if (!validatePassword($password)) {
+        $errors['password'] = 'Пароль должен быть от 8 символов, содержать строчные и заглавные буквы, цифру и спецсимвол (!@#$%...)';
+    }
 
-    echo (validateField($name)) ? "true" : "Длина строки должна быть от 3 до 21 символа";
-    echo (validateField($name)) ? "true" : "Длина строки должна быть от 3 до 21 символа";
+    if (empty($errors)) {
+        $pdo = new Database();
+        $checkSql = "SELECT id FROM users WHERE email = :email";
+        $checkStmt = $pdo->prepare($checkSql, ['email' => $email]);
+        
+        if ($checkStmt->rowCount() > 0) {
+            $errors['email'] = 'Пользователь с таким email уже зарегистрирован';
+            $_SESSION['errors'] = $errors;
+        } else {
+            $sql = "INSERT INTO users (name, email, password) VALUES (:name, :email, :password)";
+            $pdo->prepare($sql, ['name' => $name, 'email' => $email, 'password' => password_hash($password, PASSWORD_BCRYPT)]);
+        }
+
+        redirect('/auth');
+    } else {
+        $_SESSION['errors'] = $errors;
+        redirect('/auth');
+    }
 }
-
-register();

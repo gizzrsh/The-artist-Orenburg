@@ -1,3 +1,11 @@
+<?php
+require $_SERVER['DOCUMENT_ROOT'] . '/inc/functions.php';
+
+if (isset($_SESSION['is_logged_in']) && $_SESSION['is_logged_in'] == true) {
+    redirect('/');
+}
+?>
+
 <?php include $_SERVER['DOCUMENT_ROOT'] . '/inc/header.php' ?>
     <main class="main">
         <section class="auth">

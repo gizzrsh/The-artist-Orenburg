@@ -1,4 +1,4 @@
-<?php $pageTitle = 'Анна Хитрая - Оренбургская художница'; ?>
+<?php session_start(); $pageTitle = 'Анна Хитрая - Оренбургская художница'; ?>
 <?php include $_SERVER['DOCUMENT_ROOT'] . '/inc/header.php' ?>
 <main class="main">
     <section class="hero">

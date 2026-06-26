@@ -1,6 +1,4 @@
 <?php
-session_start();
-
 require $_SERVER['DOCUMENT_ROOT'] . '/config/database.php';
 require $_SERVER['DOCUMENT_ROOT'] . '/inc/functions.php';
 
@@ -29,8 +27,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $errors['email'] = 'Пользователь с таким email уже зарегистрирован';
             $_SESSION['errors'] = $errors;
         } else {
-            $sql = "INSERT INTO users (name, email, password) VALUES (:name, :email, :password)";
-            $pdo->prepare($sql, ['name' => $name, 'email' => $email, 'password' => password_hash($password, PASSWORD_BCRYPT)]);
+            $sql = "INSERT INTO users (name, email, password, role_id) VALUES (:name, :email, :password, :role_id)";
+            $pdo->prepare($sql, ['name' => $name, 'email' => $email, 'password' => password_hash($password, PASSWORD_BCRYPT), 'role_id' => 3]);
         }
 
         redirect('/auth');

@@ -12,12 +12,11 @@ $stmt = $pdo->prepare(
     'SELECT slug FROM roles WHERE id = :id', 
     ['id' => $_SESSION['role_id']]);
 $role = $stmt->fetch();
-
 if (!$role || $role['slug'] !== 'admin') {
     redirect('/auth');
-} else {
-    $artworks = $pdo->query('SELECT id, category_id, title, image, is_published FROM artworks')->fetchAll();
 }
+
+$artworks = $pdo->query('SELECT id, category_id, title, image, is_published FROM artworks')->fetchAll();
 ?>
 
 <?php include $_SERVER['DOCUMENT_ROOT'] . '/admin/inc/header.php' ?>

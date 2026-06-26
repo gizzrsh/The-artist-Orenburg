@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $_SESSION['is_logged_in'] = true;
 
             unset($_SESSION['errors']);
-            redirect('/admin');
+            redirect('/dashboard');
         }
     } else {
             $errors['auth'] = 'Неверный email или пароль.';

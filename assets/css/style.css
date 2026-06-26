@@ -85,6 +85,9 @@ body {
     font-family: var(--font-inter);
     color: var(--color-primary);
 }
+svg {
+    fill: var(--color-primary);
+}
 .main {
     flex: 1;
 }
@@ -150,13 +153,6 @@ body {
 }
 .header__menu-link:hover {
     border-bottom-color: var(--color-primary);
-}
-.header__cart {
-    color: var(--color-primary);
-
-    svg {
-        fill: currentColor;
-    }
 }
 
 /* hero */

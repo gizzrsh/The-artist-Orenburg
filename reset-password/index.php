@@ -1,4 +1,6 @@
-<?php session_start(); $pageTitle = 'Сброс пароля'; ?> 
+<?php $pageTitle = 'Сброс пароля'; 
+include dirname(__DIR__) . '/config/csrf_token.php';
+?> 
 <?php include dirname(__DIR__) . '/inc/header.php' ?>
 <main class="main">
     <section class="reset-form">
@@ -8,6 +10,7 @@
             </div>
             <div class="form-panel-reset">
                 <form action="/reset-password/reset-password.php" method="post">
+                    <input type="hidden" name="csrf_token" value="<?php echo $_SESSION['csrf_token']; ?>">
                     <div class="form-group">
                         <label for="register-email">Email</label>
                         <input type="email" id="email" name="email" required autocomplete="email" placeholder="example@mail.ru">

@@ -1,5 +1,6 @@
 <?php
-require $_SERVER['DOCUMENT_ROOT'] . '/inc/functions.php';
+require dirname(__DIR__, 2) . '/inc/functions.php';
+require dirname(__DIR__, 2) . '/config/csrf_token.php';
 
 if (isset($_SESSION['is_logged_in']) && $_SESSION['is_logged_in'] == true) {
     redirect('/');
@@ -16,6 +17,7 @@ if (isset($_SESSION['is_logged_in']) && $_SESSION['is_logged_in'] == true) {
                 </div>
                 <div class="form-panel" id="login" data-panel="login">
                     <form action="/auth/handler/authHandler.php" method="POST">
+                        <input type="hidden" name="csrf_token" value="<?php echo $_SESSION['csrf_token'] ?>">
                         <div class="form-group">
                             <label for="login-email">Email</label>
                             <input type="email" id="login-email" name="email" required autocomplete="email" placeholder="example@mail.ru">
@@ -32,6 +34,7 @@ if (isset($_SESSION['is_logged_in']) && $_SESSION['is_logged_in'] == true) {
                 </div>
                 <div class="form-panel" id="register" data-panel="register">
                     <form action="/auth/handler/registerHandler.php" method="POST">
+                        <input type="hidden" name="csrf_token" value="<?php echo $_SESSION['csrf_token'] ?>">
                         <div class="form-group">
                             <label for="register-name">Имя</label>
                             <input type="text" id="register-name" name="name" required autocomplete="name" placeholder="Иван Иванов">

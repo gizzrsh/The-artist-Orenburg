@@ -9,6 +9,8 @@ include dirname(__DIR__) . '/config/database.php';
 include dirname(__DIR__) . '/config/mail.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    CsrfTokenCheck();
+    
     // get data
     $token = bin2hex(random_bytes(32));
     $token_expired = (date('Y-m-d H:i:s', strtotime('+15 minutes')));

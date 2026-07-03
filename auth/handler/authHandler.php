@@ -1,8 +1,10 @@
 <?php
-require $_SERVER['DOCUMENT_ROOT'] . '/config/database.php';
-require $_SERVER['DOCUMENT_ROOT'] . '/inc/functions.php';
+require dirname(__DIR__, 2) . '/config/database.php';
+require dirname(__DIR__, 2) . '/inc/functions.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    CsrfTokenCheck();
+
     $email = trim($_POST['email']);
     $password = $_POST['password'];
 

@@ -4,11 +4,14 @@ session_start();
 
 include dirname(__DIR__) . '/inc/functions.php';
 include dirname(__DIR__) . '/config/database.php';
+include dirname(__DIR__) . '/config/csrf_token.php';
 
 $errors = [];
 
 // if post true
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    CsrfTokenCheck();
+
     // get token
     $token = $_GET['token'];
     // get password and password confirm
@@ -56,6 +59,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </div>
             <div class="form-panel-reset">
                 <form action="" method="post">
+                    <input type="hidden" name="csrf_token" value="<?php echo $_SESSION['csrf_token']; ?>">
                     <div class="form-group">
                         <label for="password">Пароль</label>
                         <input type="password" id="password" name="password" required placeholder="**********">

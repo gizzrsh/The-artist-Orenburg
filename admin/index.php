@@ -13,7 +13,7 @@ $stmt = $pdo->prepare(
     ['id' => $_SESSION['role_id']]);
 $role = $stmt->fetch();
 if (!$role || $role['slug'] !== 'admin') {
-    redirect('/auth');
+    redirect('/');
 }
 
 $artworks = $pdo->query('SELECT id, category_id, title, image, is_published FROM artworks')->fetchAll();

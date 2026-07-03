@@ -1,5 +1,5 @@
 <?php session_start(); $pageTitle = 'Анна Хитрая - Оренбургская художница'; ?>
-<?php include $_SERVER['DOCUMENT_ROOT'] . '/inc/header.php' ?>
+<?php include __DIR__ . '/inc/header.php' ?>
 <main class="main">
     <section class="hero">
         <div class="hero__inner container">
@@ -33,4 +33,4 @@
         </div>
     </section>
 </main>
-<?php include $_SERVER['DOCUMENT_ROOT'] . '/inc/footer.php'; ?>
+<?php include __DIR__ . '/inc/footer.php'; ?>

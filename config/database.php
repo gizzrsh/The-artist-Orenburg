@@ -23,12 +23,12 @@ class Database
         }
     }
 
-    public function query(string $sql)
+    public function query(string $sql): PDOStatement
     {
         $statement = $this->pdo->query($sql);
         return $statement;
     }
-    public function prepare(string $sql, array $params = [])
+    public function prepare(string $sql, array $params = []) : PDOStatement
     {
         $statement = $this->pdo->prepare($sql);
         $statement->execute($params);

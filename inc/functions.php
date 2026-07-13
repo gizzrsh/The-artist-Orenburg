@@ -36,7 +36,8 @@ function CsrfTokenCheck() {
     $submittedToken = $_POST['csrf_token'];
     $sessionToken = $_SESSION['csrf_token'];
 
-    if (!hash_equals($submittedToken, $sessionToken)) {
-        die("CSRF token validation failed.");
+    if (!isset($submittedToken, $sessionToken) || !hash_equals($submittedToken, $sessionToken)) {
+        http_response_code(403);
+        exit;
     }
 }

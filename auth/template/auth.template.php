@@ -5,12 +5,14 @@ require dirname(__DIR__, 2) . '/config/csrf_token.php';
 if (isset($_SESSION['is_logged_in']) && $_SESSION['is_logged_in'] == true) {
     redirect('/');
 }
+$active_tab = isset($_SESSION['active_tab']) ? $_SESSION['active_tab'] : 'login';
+unset($_SESSION['active_tab']); 
 ?>
 
 <?php include $_SERVER['DOCUMENT_ROOT'] . '/inc/header.php' ?>
     <main class="main">
         <section class="auth">
-            <div class="auth__inner container">
+            <div class="auth__inner container" id="tabsContainer" data-active-tab="<?php echo htmlspecialchars($active_tab); ?>">
                 <div class="auth__tabs">
                     <button id="auth-tab" class="auth__tab" data-tab="login">Вход</button>
                     <button id="register-tab" class="auth__tab" data-tab="register">Регистрация</button>
@@ -18,23 +20,35 @@ if (isset($_SESSION['is_logged_in']) && $_SESSION['is_logged_in'] == true) {
                 <div class="form-panel" id="login" data-panel="login">
                     <form action="/auth/handler/authHandler.php" method="POST">
                         <input type="hidden" name="csrf_token" value="<?php echo $_SESSION['csrf_token'] ?>">
+                        <input type="hidden" name="current_tab" value="login">
                         <div class="form-group">
                             <label for="login-email">Email</label>
                             <input type="email" id="login-email" name="email" required autocomplete="email" placeholder="example@mail.ru">
+                            <?php if (!empty($_SESSION['errors']['email'])): ?>
+                                <span class="form-error"><?= htmlspecialchars($_SESSION['errors']['email']) ?></span>
+                            <?php endif; ?>
                         </div>
                         <div class="form-group">
                             <label for="login-password">Пароль</label>
-                            <input type="password" id="login-password" name="password" required autocomplete="current-password" placeholder="••••••••">
+                            <input type="password" id="login-password" name="password" required placeholder="••••••••">
+                            <?php if (!empty($_SESSION['errors']['password'])): ?>
+                                <span class="form-error"><?= htmlspecialchars($_SESSION['errors']['password']) ?></span>
+                            <?php endif; ?>
                         </div>
+                        <?php if (!empty($_SESSION['errors']['auth'])): ?>
+                            <span class="form-error"><?= htmlspecialchars($_SESSION['errors']['auth']) ?></span>
+                        <?php endif; ?>
                         <button type="submit" class="btn-submit">Войти</button>
                     </form>
                     <div class="form-footer">
                         <a href="/reset-password">Забыли пароль?</a>
                     </div>
                 </div>
+                
                 <div class="form-panel" id="register" data-panel="register">
                     <form action="/auth/handler/registerHandler.php" method="POST">
                         <input type="hidden" name="csrf_token" value="<?php echo $_SESSION['csrf_token'] ?>">
+                        <input type="hidden" name="current_tab" value="register">
                         <div class="form-group">
                             <label for="register-name">Имя</label>
                             <input type="text" id="register-name" name="name" required autocomplete="name" placeholder="Иван Иванов">

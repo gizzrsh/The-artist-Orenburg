@@ -33,10 +33,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     'email' => $email]);
 
     // send link with token for reser password
-    $mail->setFrom('blood100012@gmail.com');
+    $mail->setFrom($_ENV['MAIL_FROM_ADDRESS'], $_ENV['MAIL_FROM_NAME']);
     $mail->addAddress($email);
     $mail->Subject = 'link to reset your password';
-    $mail->Body = "Привет! Это ссылка для сброса пароля: http://localhost:8080/reset-password/password-change.php?token=$token";
+    $mail->Body = "Привет! Это ссылка для сброса пароля: http://localhost:333/reset-password/password-change.php?token=$token";
     $mail->send();
 
     // save success message and redirect

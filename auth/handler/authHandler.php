@@ -1,6 +1,10 @@
 <?php
+ini_set('display_errors', '1');
+ini_set('error_reporting', E_ALL);
 require dirname(__DIR__, 2) . '/config/database.php';
 require dirname(__DIR__, 2) . '/inc/functions.php';
+
+$errors = [];
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     CsrfTokenCheck();
@@ -8,10 +12,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email = trim($_POST['email']);
     $password = $_POST['password'];
 
-    $errors = [];
-    if (empty($email) || empty($password)) {
-        $errors['auth'] = 'Неверный email или пароль.';
-    }
+    if (empty($email)) { $errors['email'] = 'Введите email.'; }
+    if (empty($password)) { $errors['password'] = 'Введите пароль.'; }
 
     if (empty($errors)) {
         $pdo = new Database();
@@ -27,11 +29,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             unset($_SESSION['errors']);
             redirect('/dashboard');
-        }
-    } else {
+        } else {
             $errors['auth'] = 'Неверный email или пароль.';
+        }
     }
-
+    
     $_SESSION['errors'] = $errors;
+    $_SESSION['active_tab'] = 'login';
     redirect('/auth');
 }

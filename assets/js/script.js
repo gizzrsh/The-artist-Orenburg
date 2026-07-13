@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // auth tabs
     const tabs = document.querySelectorAll('[data-tab]');
     const panels = document.querySelectorAll('[data-panel]');
+    const container = document.querySelector('#tabsContainer');
 
     function switchTab(tabId) {
         tabs.forEach(btn => btn.classList.remove('active'));
@@ -32,7 +33,12 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    switchTab('register');
+    const savedTab = container ? container.dataset.activeTab : tabs[0]?.dataset.tab;
+    console.log(savedTab);
+    if (savedTab) {
+        switchTab(savedTab);
+    }
+
 
 
     const showPasswordBtn = document.getElementById('togglePassword');

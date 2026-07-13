@@ -36,6 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         redirect('/auth');
     } else {
         $_SESSION['errors'] = $errors;
+        $_SESSION['active_tab'] = 'register';
         redirect('/auth');
     }
 }

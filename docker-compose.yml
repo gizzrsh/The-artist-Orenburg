@@ -13,6 +13,7 @@ services:
             - .env
         volumes:
             - .:/var/www/html
+
     db:
         image: mariadb
         restart: always
@@ -24,3 +25,10 @@ services:
         restart: always
         ports:
             - 8081:8080
+
+    mailpit:
+        image: axllent/mailpit
+        restart: unless-stopped
+        ports:
+            - 8025:8025
+            - 1025:1025

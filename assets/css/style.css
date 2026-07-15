@@ -461,6 +461,16 @@ svg {
     background: transparent;
 }
 
+/* dashboard */
+.dashboard__email-verified {
+    width: 100%;
+    background-color: var(--color-primary);
+    text-align: center;
+}
+.dashboard__link {
+    color: var(--color-light);
+}
+
 /* footer */
 .footer {
     width: 100%;

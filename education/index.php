@@ -1,3 +1,5 @@
-<?php $pageTitle = 'Обучение'; ?>
-<?php include $_SERVER['DOCUMENT_ROOT'] . '/inc/header.php' ?>
-<?php include $_SERVER['DOCUMENT_ROOT'] . '/inc/footer.php' ?>
+<?php $pageTitle = 'Обучение'; 
+include dirname(__DIR__) . '/config/init.php';
+?>
+<?php include dirname(__DIR__) . '/inc/header.php' ?>
+<?php include dirname(__DIR__) . '/inc/footer.php' ?>

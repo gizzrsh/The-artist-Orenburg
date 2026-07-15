@@ -1,7 +1,8 @@
 <?php
 
-require $_SERVER['DOCUMENT_ROOT'] . '/inc/functions.php';
-require $_SERVER['DOCUMENT_ROOT'] . '/config/database.php';
+require dirname(__DIR__) . '/config/init.php';
+require dirname(__DIR__) . '/config/database.php';
+require dirname(__DIR__) . '/inc/functions.php';
 
 if (!isset($_SESSION['is_logged_in']) || $_SESSION['is_logged_in'] !== true) {
     redirect('/auth');
@@ -19,7 +20,7 @@ if (!$role || $role['slug'] !== 'admin') {
 $artworks = $pdo->query('SELECT id, category_id, title, image, is_published FROM artworks')->fetchAll();
 ?>
 
-<?php include $_SERVER['DOCUMENT_ROOT'] . '/admin/inc/header.php' ?>
+<?php include dirname(__DIR__) . '/admin/inc/header.php' ?>
 <main class="main">
     <section class="table">
         <div class="table__inner container">
@@ -51,4 +52,4 @@ $artworks = $pdo->query('SELECT id, category_id, title, image, is_published FROM
         </div>
     </section>
 </main>
-<?php include $_SERVER['DOCUMENT_ROOT'] . '/admin/inc/footer.php' ?>
+<?php include dirname(__DIR__) . '/admin/inc/footer.php' ?>

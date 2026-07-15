@@ -1,8 +1,10 @@
-<?php $pageTitle = 'Корзина'; ?>
-<?php include $_SERVER['DOCUMENT_ROOT'] . '/inc/header.php' ?>
+<?php $pageTitle = 'Корзина'; 
+include dirname(__DIR__) . '/config/init.php';
+?>
+<?php include dirname(__DIR__) . '/inc/header.php' ?>
 <main class="main">
     <div class="container">
         <h1 style="text-align: center;">Скоро здесь будет корзина</h1>
     </div>
 </main>
-<?php include $_SERVER['DOCUMENT_ROOT'] . '/inc/footer.php'; ?>
+<?php include dirname(__DIR__) . '/inc/footer.php'; ?>

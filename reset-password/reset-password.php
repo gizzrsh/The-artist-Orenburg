@@ -1,7 +1,6 @@
 <?php
 // create session and set default timezone
 session_start();
-date_default_timezone_set('Asia/Yekaterinburg');
 
 // include helpers and db
 include dirname(__DIR__) . '/inc/functions.php';
@@ -28,9 +27,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $pdo->prepare('UPDATE users
                 SET token = :token, token_expired = :token_expired
                 WHERE email = :email', 
-                ['token' => $token, 
-                    'token_expired' => $token_expired, 
-                    'email' => $email]);
+        ['token' => $token, 
+         'token_expired' => $token_expired, 
+         'email' => $email]
+    );
 
     // send link with token for reser password
     $mail->setFrom($_ENV['MAIL_FROM_ADDRESS'], 'Mailer');

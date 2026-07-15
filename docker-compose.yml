@@ -19,6 +19,7 @@ services:
         restart: always
         environment:
             MARIADB_ROOT_PASSWORD: "${DB_PASS}"
+            TZ: Asia/Yekaterinburg
 
     adminer:
         image: adminer

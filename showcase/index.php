@@ -1,5 +1,7 @@
-<?php $pageTitle = 'Витрина'; ?>
-<?php include $_SERVER['DOCUMENT_ROOT'] . '/inc/header.php' ?>
+<?php $pageTitle = 'Витрина'; 
+require dirname(__DIR__) . '/config/init.php';
+?>
+<?php include dirname(__DIR__) . '/inc/header.php' ?>
 <main class="main">
     <section class="categories">
         <div class="categories__inner container">
@@ -26,4 +28,4 @@
         </div>
     </section>
 </main>
-<?php include $_SERVER['DOCUMENT_ROOT'] . '/inc/footer.php' ?>
+<?php include dirname(__DIR__) . '/inc/footer.php' ?>

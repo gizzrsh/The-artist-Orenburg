@@ -1,6 +1,4 @@
 <?php
-ini_set('display_errors', '1');
-ini_set('error_reporting', E_ALL);
 require dirname(__DIR__, 2) . '/config/database.php';
 require dirname(__DIR__, 2) . '/inc/functions.php';
 

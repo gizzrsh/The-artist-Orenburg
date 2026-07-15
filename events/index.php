@@ -1,3 +1,5 @@
-<?php $pageTitle = 'Мероприятия'; ?>
-<?php include $_SERVER['DOCUMENT_ROOT'] . '/inc/header.php' ?>
-<?php include $_SERVER['DOCUMENT_ROOT'] . '/inc/footer.php' ?>
+<?php $pageTitle = 'Мероприятия'; 
+require dirname(__DIR__) . '/config/init.php';
+?>
+<?php include dirname(__DIR__) . '/inc/header.php' ?>
+<?php include dirname(__DIR__) . '/inc/footer.php' ?>

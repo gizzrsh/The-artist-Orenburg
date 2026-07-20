@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $pdo = new Database;
     $user = $pdo->prepare('SELECT * FROM users WHERE email = :email', ['email' => $email])->fetch();
     if (!$user || !validateEmail($email)) {
-        $_SESSION['errors']['user'] = 'Пользователь не найден.';
+        $_SESSION['errors']['user'] = 'Если email зарегистрирован, письмо отправлено';
         redirect('/reset-password');
     }
 
@@ -41,6 +41,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $mail->send();
 
     // save success message and redirect
-    $_SESSION['success'] = 'Ссылка отправлена на почту.';
+    $_SESSION['success'] = 'Если email зарегистрирован, письмо отправлено.';
     redirect('/reset-password');
 }

@@ -17,7 +17,6 @@ include dirname(__DIR__) . '/config/csrf_token.php';
 
                         <?php if (!empty($_SESSION['errors']['user'])): ?>
                             <span class="form-error"><?= htmlspecialchars($_SESSION['errors']['user']) ?></span>
-                            <span class="form-error"><?= htmlspecialchars($_SESSION['errors']['email']) ?></span>
                         <?php endif; ?>
                         <?php if (!empty($_SESSION['success'])): ?>
                             <span class="form-success"><?= htmlspecialchars($_SESSION['success']) ?></span>

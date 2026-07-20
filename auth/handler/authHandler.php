@@ -2,6 +2,9 @@
 require dirname(__DIR__, 2) . '/config/database.php';
 require dirname(__DIR__, 2) . '/inc/functions.php';
 
+$maxLimit = 6;
+$clean_ip = filter_var($_SERVER['REMOTE_ADDR'], FILTER_VALIDATE_IP) ?? 'unknown';
+
 $errors = [];
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {

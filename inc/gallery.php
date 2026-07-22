@@ -1,13 +1,14 @@
 <?php 
-require $_SERVER['DOCUMENT_ROOT'] . '/config/database.php';
+require dirname(__DIR__) . '/config/database.php';
 
 $pageTitle = $title;
 
 $pdo = new Database();
-$sql = ('SELECT title, description, image FROM artworks WHERE category_id = :category_id and is_published = 1');
+$sql = ('SELECT id, title, description, image FROM artworks WHERE category_id = :category_id AND is_published = 1');
 $artworks = $pdo->prepare($sql, ['category_id' => $category_id]);
 ?>
-<?php include $_SERVER['DOCUMENT_ROOT'] . '/inc/header.php' ?>
+
+<?php include dirname(__DIR__) . '/inc/header.php' ?>
 <main class="main">
     <section class="gallery">
         <div class="gallery__inner container">
@@ -24,11 +25,21 @@ $artworks = $pdo->prepare($sql, ['category_id' => $category_id]);
                         <p class="gallery__card-desc">
                             <?= htmlspecialchars($artwork['description']) ?>
                         </p>
-                        <button class="gallery__card-btn">Узнать цену</button>
+                        <?php if (empty($_SESSION['cart'][$artwork['id']])): ?>
+                        <form class="gallery__card-form" action="<?php dirname(__DIR__) ?>/cart/add.php" method="post">
+                            <input type="hidden" name="artwork_id" value="<?= htmlspecialchars((int)$artwork['id']) ?>">
+                            <button type="submit" class="gallery__card-btn">Добавить в корзину</button>
+                        </form>
+                        <?php else: ?>
+                        <div class="gallery__card-action">
+                            <span>Товаров в корзине: <?= $_SESSION['cart'][$artwork['id']]['count'] ?></span>
+                            <a href="<?php dirname(__DIR__) ?>/cart">Перейти в корзину</a>
+                        </div>
+                        <?php endif; ?>
                     </div>
                 <?php endforeach; ?>
                 </div>
         </div>
     </section>
 </main>
-<?php include $_SERVER['DOCUMENT_ROOT'] . '/inc/footer.php' ?>
+<?php include dirname(__DIR__) . '/inc/footer.php' ?>

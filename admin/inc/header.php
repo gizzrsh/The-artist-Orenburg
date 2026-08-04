@@ -6,6 +6,7 @@
     <meta name="description" content="Портфолио художницы из Оренбурга">
     <link rel="stylesheet" href="/assets/css/normalize.css">
     <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/admin.css">
     <title><?= $pageTitle ?? 'Анна Хитрая - Оренбургская художница' ?></title>
     <link rel="icon" href="/favicon.ico">
     <link rel="manifest" href="/site.webmanifest">
@@ -16,6 +17,7 @@
     <header class="header">
         <div class="header__inner container">
             <a href="/admin" class="header__logo">Админ панель</a>
+            <a href="/admin/add_artworks.php" class="header__link">Добавить товар</a>
             <a href="/" class="header__link">На сайт</a>
         </div>
     </header>

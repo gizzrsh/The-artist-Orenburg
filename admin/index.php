@@ -1,23 +1,20 @@
 <?php
 
 require dirname(__DIR__) . '/config/init.php';
-require dirname(__DIR__) . '/config/database.php';
 require dirname(__DIR__) . '/inc/functions.php';
 
-if (!isset($_SESSION['is_logged_in']) || $_SESSION['is_logged_in'] !== true) {
+if (!is_logged()) {
     redirect('/auth');
 }
 
-$pdo = new Database;
-$stmt = $pdo->prepare(
-    'SELECT slug FROM roles WHERE id = :id', 
-    ['id' => $_SESSION['role_id']]);
+$stmt = Database::getConnection()->prepare('SELECT slug FROM roles WHERE id = :id');
+$stmt->execute(['id' => $_SESSION['role_id']]);
 $role = $stmt->fetch();
 if (!$role || $role['slug'] !== 'admin') {
     redirect('/');
 }
 
-$artworks = $pdo->query('SELECT id, category_id, title, image, is_published FROM artworks')->fetchAll();
+$artworks = $artworkRepo->findAll();
 ?>
 
 <?php include dirname(__DIR__) . '/admin/inc/header.php' ?>

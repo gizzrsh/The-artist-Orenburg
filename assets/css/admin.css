@@ -1,0 +1,307 @@
+/* ==========================================================================
+   Admin: Add / Edit artwork form
+   A paper card on the dark wall, similar to auth forms but with more fields
+   and an image upload preview. Uses the same design tokens as the rest.
+   ========================================================================== */
+.admin-add {
+    padding-block: var(--space-8);
+}
+
+.admin-add__inner {
+    max-width: 44rem;          /* slightly wider than auth form */
+    margin-inline: auto;
+}
+
+.admin-add__title {
+    font-family: var(--font-tygra);
+    font-size: var(--fs-h1);
+    font-weight: 400;
+    color: var(--color-ivory);
+    margin-bottom: var(--space-5);
+    text-align: center;
+}
+
+.admin-add__title::after {
+    content: '';
+    display: block;
+    width: 3rem;
+    height: 2px;
+    margin: var(--space-3) auto 0;
+    background: linear-gradient(90deg, transparent, var(--color-gold), transparent);
+}
+
+/* ----- The form card ----- */
+.admin-form {
+    background: var(--color-paper);
+    border: 1px solid var(--color-gold);
+    padding: var(--space-6);
+    color: var(--color-ink);
+    box-shadow: var(--shadow-card);
+}
+
+.admin-form__group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    margin-bottom: var(--space-5);
+}
+
+.admin-form__group:last-of-type {
+    margin-bottom: 0;
+}
+
+.admin-form__label {
+    font-size: var(--fs-tiny);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-ink-soft);
+}
+
+/* Shared input/select/textarea styles — match auth form inputs */
+.admin-form__input,
+.admin-form__select,
+.admin-form__textarea {
+    width: 100%;
+    padding: 0.625rem 0;
+    border: none;
+    border-bottom: 1.5px solid var(--color-paper-line-strong);
+    border-radius: 0;
+    background: transparent;
+    font-size: 0.9375rem;
+    font-family: var(--font-inter);
+    color: var(--color-ink);
+    outline: none;
+    transition: border-color var(--transition-fast);
+}
+
+.admin-form__input::placeholder,
+.admin-form__textarea::placeholder {
+    color: var(--color-ink-soft);
+    opacity: 0.5;
+}
+
+.admin-form__input:focus,
+.admin-form__select:focus,
+.admin-form__textarea:focus {
+    border-color: var(--color-oxide);
+}
+
+.admin-form__textarea {
+    min-height: 6rem;
+    resize: vertical;
+    border-bottom: 1.5px solid var(--color-paper-line-strong);
+}
+
+.admin-form__select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%235c5646' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0 center;
+    padding-right: 1.5rem;
+    cursor: pointer;
+}
+
+.admin-form__select option {
+    background: var(--color-paper);
+    color: var(--color-ink);
+}
+
+/* ----- Image upload with preview ----- */
+.admin-form__file-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-4);
+}
+
+.admin-form__file-input {
+    flex: 1;
+    min-width: 12rem;
+}
+
+.admin-form__file-input input[type="file"] {
+    display: block;
+    width: 100%;
+    padding: var(--space-2) 0;
+    font-size: var(--fs-small);
+    color: var(--color-ink-soft);
+    border: 1px dashed var(--color-paper-line-strong);
+    background: var(--color-paper-raised);
+    cursor: pointer;
+    transition: border-color var(--transition-fast);
+}
+
+.admin-form__file-input input[type="file"]:hover {
+    border-color: var(--color-gold);
+}
+
+.admin-form__file-preview {
+    flex-shrink: 0;
+    width: 5rem;
+    height: 5rem;
+    border: 1px solid var(--color-gold);
+    background: var(--color-paper-raised);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.admin-form__file-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.admin-form__file-preview .placeholder {
+    font-size: 2rem;
+    color: var(--color-ink-soft);
+    opacity: 0.3;
+    line-height: 1;
+}
+
+/* ----- Row with two columns (e.g., price & stock) ----- */
+.admin-form__row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-4);
+}
+
+/* ----- Checkbox (e.g., is_published) ----- */
+.admin-form__checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    margin-bottom: var(--space-5);
+}
+
+.admin-form__checkbox-group input[type="checkbox"] {
+    width: 1.1rem;
+    height: 1.1rem;
+    accent-color: var(--color-oxide);
+    cursor: pointer;
+}
+
+.admin-form__checkbox-group label {
+    font-size: var(--fs-small);
+    font-weight: 600;
+    color: var(--color-ink-soft);
+    cursor: pointer;
+}
+
+/* ----- Form actions (buttons) ----- */
+.admin-form__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    margin-top: var(--space-6);
+    padding-top: var(--space-5);
+    border-top: 1px solid var(--color-paper-line);
+}
+
+.admin-form__actions .btn {
+    flex: 1 1 auto;
+    min-width: 8rem;
+    justify-content: center;
+}
+
+.admin-form__actions .btn--save {
+    background: var(--color-ink);
+    border-color: var(--color-ink);
+    color: var(--color-paper);
+}
+
+.admin-form__actions .btn--save:hover {
+    background: var(--color-oxide);
+    border-color: var(--color-oxide);
+    color: var(--color-paper);
+    box-shadow: none;
+}
+
+.admin-form__actions .btn--cancel {
+    border-color: var(--color-paper-line-strong);
+    color: var(--color-ink-soft);
+}
+
+.admin-form__actions .btn--cancel:hover {
+    background: var(--color-paper-raised);
+    border-color: var(--color-ink-soft);
+    color: var(--color-ink);
+    box-shadow: none;
+}
+
+/* ----- Validation feedback (same as auth) ----- */
+.admin-form__error {
+    display: block;
+    margin-top: var(--space-1);
+    font-size: var(--fs-small);
+    color: var(--color-error);
+}
+
+.admin-form__success {
+    display: block;
+    margin-top: var(--space-1);
+    font-size: var(--fs-small);
+    color: var(--color-success);
+}
+
+/* ----- Responsive tweaks ----- */
+@media (width < 40rem) {
+    .admin-form__row {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .admin-form__file-wrapper {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .admin-form__file-preview {
+        align-self: center;
+    }
+
+    .admin-form__actions {
+        flex-direction: column;
+    }
+
+    .admin-form__actions .btn {
+        width: 100%;
+    }
+}
+
+/* ----- Table "Add" button (if you want it to look like a proper CTA) ----- */
+.table__btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    padding: 0.7rem 1.75rem;
+    margin-bottom: var(--space-5);
+    background: var(--color-gold);
+    color: var(--color-wall);
+    font-family: var(--font-inter);
+    font-size: var(--fs-small);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    text-decoration: none;
+    border: 1px solid var(--color-gold);
+    transition: background var(--transition-base), color var(--transition-base),
+                box-shadow var(--transition-base), transform var(--transition-fast);
+    border-radius: 0;
+}
+
+.table__btn:hover {
+    background: var(--color-oxide);
+    border-color: var(--color-oxide);
+    color: var(--color-ivory);
+    box-shadow: 0 0 0 1px var(--color-oxide), 0 0 24px rgba(184, 82, 47, 0.2);
+    transform: translateY(-2px);
+}
+
+.table__btn:active {
+    transform: translateY(1px);
+}

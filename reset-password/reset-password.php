@@ -3,8 +3,8 @@
 session_start();
 
 // include helpers and db
+include dirname(__DIR__) . '/config/init.php';
 include dirname(__DIR__) . '/inc/functions.php';
-include dirname(__DIR__) . '/config/database.php';
 include dirname(__DIR__) . '/config/mail.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -16,21 +16,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email = $_POST['email'];
 
     // check exists user
-    $pdo = new Database;
-    $user = $pdo->prepare('SELECT * FROM users WHERE email = :email', ['email' => $email])->fetch();
+    $user = $userRepo->findByEmail($email);
     if (!$user || !validateEmail($email)) {
         $_SESSION['errors']['user'] = 'Если email зарегистрирован, письмо отправлено';
         redirect('/reset-password');
     }
 
     // update columns token and token expired, if gotten email matches
-    $pdo->prepare('UPDATE users
-                SET token = :token, token_expired = :token_expired
-                WHERE email = :email', 
-        ['token' => $token, 
-         'token_expired' => $token_expired, 
-         'email' => $email]
-    );
+    $userRepo->updateTokenByEmail($email, $token, $token_expired);
 
     // send link with token for reser password
     $mail->setFrom($_ENV['MAIL_FROM_ADDRESS'], 'Mailer');

@@ -2,9 +2,9 @@
 $pageTitle = 'Новый пароль'; 
 session_start(); 
 
-include dirname(__DIR__) . '/inc/functions.php';
-include dirname(__DIR__) . '/config/database.php';
+include dirname(__DIR__) . '/config/init.php';
 include dirname(__DIR__) . '/config/csrf_token.php';
+include dirname(__DIR__) . '/inc/functions.php';
 
 $errors = [];
 
@@ -32,17 +32,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     // query a database
-    $pdo = new Database;
-    $sql = 'UPDATE users
-            SET password = :password, token = NULL, token_expired = NULL
-            WHERE token = :token AND token_expired > NOW()';
-    $stmt = $pdo->prepare($sql, [':password' => password_hash($password, PASSWORD_DEFAULT), ':token' => $token]);
+    $stmt = $userRepo->updatePasswordByToken($token, $password);
 
     // check has changed count row a database or not
     if ($stmt->rowCount() >= 1) {
         // display success message
         $_SESSION['success'] = 'Пароль успешно обновлен.';
-        redirect($_SERVER['REQUEST_URI']);
+        redirect('/auth');
     } else {
         // display error message
         $_SESSION['errors']['token_expired'] = 'Срок действия токена истек.';

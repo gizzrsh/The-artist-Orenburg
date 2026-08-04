@@ -1,5 +1,6 @@
 <?php
-require dirname(__DIR__, 2) . '/config/database.php';
+
+require dirname(__DIR__, 2) . '/config/init.php';
 require dirname(__DIR__, 2) . '/inc/functions.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -21,16 +22,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     if (empty($errors)) {
-        $pdo = new Database();
-        $checkSql = "SELECT id FROM users WHERE email = :email";
-        $checkStmt = $pdo->prepare($checkSql, ['email' => $email]);
-        
-        if ($checkStmt->rowCount() > 0) {
+        $user = $userRepo->findByEmail($email);
+        if ($user) {
             $errors['email'] = 'Пользователь с таким email уже зарегистрирован';
             $_SESSION['errors'] = $errors;
         } else {
-            $sql = "INSERT INTO users (name, email, password, role_id) VALUES (:name, :email, :password, :role_id)";
-            $pdo->prepare($sql, ['name' => $name, 'email' => $email, 'password' => password_hash($password, PASSWORD_BCRYPT), 'role_id' => 3]);
+            $userData = [
+                'name'      => $name,
+                'email'     => $email,
+                'password'  => password_hash($password, PASSWORD_DEFAULT),
+                'role_id'   => 3,
+            ];
+            $userRepo->createUser($userData);
         }
 
         redirect('/auth');

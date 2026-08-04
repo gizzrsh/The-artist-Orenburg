@@ -3,25 +3,16 @@
 session_start();
 
 // include helpers and db
-include dirname(__DIR__) . '/inc/functions.php';
+include dirname(__DIR__) . '/config/init.php';
 include dirname(__DIR__) . '/config/mail.php';
-include dirname(__DIR__) . '/config/database.php';
+include dirname(__DIR__) . '/inc/functions.php';
 
-$pdo = new Database;
-$email = $pdo->prepare('SELECT email, email_verified FROM users WHERE id = :id', ['id' => $_SESSION['user_id']])->fetch();
+$email = $userRepo->findById($_SESSION['user_id']);
 if ($email['email_verified'] == 0 && empty($_GET['token'])) {
     $token = bin2hex(random_bytes(32));
     $token_expired = date('Y-m-d H:i:s', strtotime('+15 minutes')) ?? '';
 
-    $pdo->prepare('UPDATE users 
-        SET token = :token, token_expired = :token_expired 
-        WHERE email = :email', 
-        [
-            ':token' => $token, 
-            ':token_expired' => $token_expired, 
-            ':email' => $email['email']
-        ]
-    );
+    $userRepo->updateTokenByEmail($email['email'], $token, $token_expired);
 
     $mail->setFrom($_ENV['MAIL_FROM_ADDRESS'], 'Mailer');
     $mail->addAddress($email['email'], 'Recipient');
@@ -34,13 +25,10 @@ if ($email['email_verified'] == 0 && empty($_GET['token'])) {
     redirect('/dashboard');
 }
 if (!empty($_GET['token'])) {
-    $pdo->prepare('UPDATE users 
-                    SET token = NULL, token_expired = NULL, email_verified = 1 
-                    WHERE token = :token AND token_expired > NOW()', 
-        [
-            'token' => $_GET['token']
-        ]
-    );
+    $token = $_GET['token'];
+
+    $userRepo->emailConfirmedByToken($token);
+
     $_SESSION['success'] = 'Почта успешно подтверждена.';
     redirect('/dashboard');
 }

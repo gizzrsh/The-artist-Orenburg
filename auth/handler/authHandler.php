@@ -1,5 +1,5 @@
 <?php
-require dirname(__DIR__, 2) . '/config/database.php';
+require dirname(__DIR__, 2) . '/config/init.php';
 require dirname(__DIR__, 2) . '/inc/functions.php';
 
 $maxLimit = 6;
@@ -17,10 +17,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (empty($password)) { $errors['password'] = 'Введите пароль.'; }
 
     if (empty($errors)) {
-        $pdo = new Database();
 
-        $sql = "SELECT id, email, role_id, password FROM users WHERE email = :email";
-        $user = $pdo->prepare($sql, ['email' => $email])->fetch();
+        $user = $userRepo->findByEmail($email);
 
         if ($user && password_verify($password, $user['password'])) {
             session_regenerate_id(true);

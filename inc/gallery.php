@@ -1,11 +1,14 @@
 <?php 
-require dirname(__DIR__) . '/config/database.php';
+
+use App\Repository\ArtworkRepository;
 
 $pageTitle = $title;
 
-$pdo = new Database();
-$sql = ('SELECT id, title, description, image FROM artworks WHERE category_id = :category_id AND is_published = 1');
-$artworks = $pdo->prepare($sql, ['category_id' => $category_id]);
+require dirname(__DIR__) . '/config/init.php';
+require dirname(__DIR__) . '/inc/functions.php';
+
+$artworks = $artworkRepo->findAllByCategoryId($category_id);
+
 ?>
 
 <?php include dirname(__DIR__) . '/inc/header.php' ?>
@@ -26,7 +29,8 @@ $artworks = $pdo->prepare($sql, ['category_id' => $category_id]);
                             <?= htmlspecialchars($artwork['description']) ?>
                         </p>
                         <?php if (empty($_SESSION['cart'][$artwork['id']])): ?>
-                        <form class="gallery__card-form" action="<?php dirname(__DIR__) ?>/cart/add.php" method="post">
+                        <form class="gallery__card-form" action="/cart/add.php" method="post">
+                            <input type="hidden" name="csrf_token" value="<?php echo $_SESSION['csrf_token'] ?>">
                             <input type="hidden" name="artwork_id" value="<?= htmlspecialchars((int)$artwork['id']) ?>">
                             <button type="submit" class="gallery__card-btn">Добавить в корзину</button>
                         </form>

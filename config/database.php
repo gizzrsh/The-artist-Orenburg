@@ -1,37 +1,28 @@
 <?php
 require_once __DIR__ . '/init.php';
+
 class Database
 {
-    private string $dsn;
-    private string $username; 
-    private string $password;
-    public  array  $options = [
-        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
-    ];
-    private ?PDO $pdo = null;
-    public function __construct()
-    {
-        $this->dsn = "mysql:host=" . $_ENV['DB_HOST'] . ';' . "dbname=" . $_ENV['DB_NAME'] . ';' . "charset=utf8mb4";
-        $this->username = $_ENV['DB_USER'];
-        $this->password = $_ENV['DB_PASS'];
+    private static ?PDO $pdo = null;
 
-        try {
-            $this->pdo = new PDO($this->dsn, $this->username, $this->password, $this->options);
-        } catch (PDOException $e) {
-            throw new PDOException($e->getMessage(), $e->getCode());
+    private function __construct() {}
+
+    public static function getConnection(): PDO
+    {
+        if (self::$pdo === null) {
+            $dsn = sprintf(
+                "mysql:host=%s;dbname=%s;charset=utf8mb4",
+                $_ENV['DB_HOST'] ?? 'localhost',
+                $_ENV['DB_NAME'] ?? 'test'
+            );
+            $username = $_ENV['DB_USER'] ?? 'root';
+            $password = $_ENV['DB_PASS'] ?? '';
+
+            self::$pdo = new PDO($dsn, $username, $password, [
+                PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
+                PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+            ]);
         }
-    }
-
-    public function query(string $sql): PDOStatement
-    {
-        $statement = $this->pdo->query($sql);
-        return $statement;
-    }
-    public function prepare(string $sql, array $params = []) : PDOStatement
-    {
-        $statement = $this->pdo->prepare($sql);
-        $statement->execute($params);
-        return $statement;
+        return self::$pdo;
     }
 }

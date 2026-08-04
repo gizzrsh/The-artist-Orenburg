@@ -9,7 +9,7 @@ $active_tab = isset($_SESSION['active_tab']) ? $_SESSION['active_tab'] : 'login'
 unset($_SESSION['active_tab']); 
 ?>
 
-<?php include $_SERVER['DOCUMENT_ROOT'] . '/inc/header.php' ?>
+<?php include dirname(__DIR__, 2) . '/inc/header.php' ?>
     <main class="main">
         <section class="auth">
             <div class="auth__inner container" id="tabsContainer" data-active-tab="<?php echo htmlspecialchars($active_tab); ?>">
@@ -42,6 +42,10 @@ unset($_SESSION['active_tab']);
                         </div>
                         <?php if (!empty($_SESSION['errors']['auth'])): ?>
                             <span class="form-error"><?= htmlspecialchars($_SESSION['errors']['auth']) ?></span>
+                        <?php endif; ?>
+                        <?php if (!empty($_SESSION['success'])): ?>
+                            <span class="form-success"><?= htmlspecialchars($_SESSION['success']) ?></span>
+                            <?php unset($_SESSION['success']) ?>
                         <?php endif; ?>
                         <button type="submit" class="btn-submit">Войти</button>
                     </form>
@@ -94,5 +98,4 @@ unset($_SESSION['active_tab']);
             </div>
         </section>
     </main>
-<?php include $_SERVER['DOCUMENT_ROOT'] . '/inc/footer.php' ?>
-<?php unset($_SESSION['errors']) ?>
+<?php include dirname(__DIR__, 2) . '/inc/footer.php' ?>

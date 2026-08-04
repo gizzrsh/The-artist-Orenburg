@@ -1,10 +1,11 @@
 <?php
 include dirname(__DIR__) . '/config/init.php';
-include dirname(__DIR__) . '/config/database.php';
 include dirname(__DIR__) . '/inc/functions.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     
+    CsrfTokenCheck();    
+
     $artwork_id = $_POST['artwork_id'] ?? '';
     
     if ($artwork_id === '') redirect($_SERVER['HTTP_REFERER'] ?? '/');

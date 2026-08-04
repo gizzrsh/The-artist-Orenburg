@@ -1,19 +1,17 @@
 <?php $pageTitle = 'Личный кабинет';
 
-require dirname(__DIR__) . '/inc/functions.php';
-require dirname(__DIR__) . '/config/database.php';
-include dirname(__DIR__) . '/config/mail.php';
 include dirname(__DIR__) . '/config/init.php';
+include dirname(__DIR__) . '/config/mail.php';
+require dirname(__DIR__) . '/inc/functions.php';
 
 if (!isset($_SESSION['is_logged_in']) || $_SESSION['is_logged_in'] !== true) {
     redirect('/auth');
 }
 
-$pdo = new Database;
-$email = $pdo->prepare('SELECT email_verified FROM users WHERE id = :id', ['id' => $_SESSION['user_id']])->fetch();
-$stmt = $pdo->prepare(
-    'SELECT slug FROM roles WHERE id = :id', 
-    ['id' => $_SESSION['role_id']]);
+
+$email = $userRepo->findById($_SESSION['user_id']);
+$stmt = Database::getConnection()->prepare('SELECT slug FROM roles WHERE id = :id');
+$stmt->execute(['id' => $_SESSION['role_id']]);
 $role = $stmt->fetch();
 ?>
 

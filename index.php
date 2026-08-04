@@ -3,7 +3,7 @@
 <main class="main">
     <section class="hero">
         <div class="hero__inner container">
-            <h1 class="hero__title title">Интерьерные картины и гипсовые панно – создаю уют в вашем доме</h1>
+            <h1 class="hero__title title">Интерьерные картины и гипсовые панно – <br /> создаю уют в вашем доме</h1>
             <div class="hero__block">
                 <img class="hero__img" src="/assets/img/author.webp" alt="Изображение Анны Хитрой" width="488" height="458">
                 <div class="hero__content">

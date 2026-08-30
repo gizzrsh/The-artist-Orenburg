@@ -17,7 +17,7 @@
     <header class="header">
         <div class="header__inner container">
             <a href="/admin" class="header__logo">Админ панель</a>
-            <a href="/admin/add_artworks.php" class="header__link">Добавить товар</a>
+            <a href="/admin/artwork.php" class="header__link">Добавить товар</a>
             <a href="/" class="header__link">На сайт</a>
         </div>
     </header>

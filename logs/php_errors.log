@@ -41,3 +41,51 @@ Stack trace:
 Stack trace:
 #0 {main}
   thrown in /var/www/html/config/init.php on line 34
+[07-Aug-2026 11:46:11 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[22007]: Invalid datetime format: 1366 Incorrect integer value: '' for column `artist_site`.`auth_attempts`.`is_success` at row 1 in /var/www/html/app/Repository/UserRepository.php:87
+Stack trace:
+#0 /var/www/html/app/Repository/UserRepository.php(87): PDOStatement->execute(Array)
+#1 /var/www/html/auth/handler/authHandler.php(38): App\Repository\UserRepository->updateCounterAttempts('user@example.co...', '172.18.0.1', false)
+#2 {main}
+  thrown in /var/www/html/app/Repository/UserRepository.php on line 87
+[07-Aug-2026 11:46:36 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[22007]: Invalid datetime format: 1366 Incorrect integer value: '' for column `artist_site`.`auth_attempts`.`is_success` at row 1 in /var/www/html/app/Repository/UserRepository.php:87
+Stack trace:
+#0 /var/www/html/app/Repository/UserRepository.php(87): PDOStatement->execute(Array)
+#1 /var/www/html/auth/handler/authHandler.php(38): App\Repository\UserRepository->updateCounterAttempts('user@example.co...', '172.18.0.1', false)
+#2 {main}
+  thrown in /var/www/html/app/Repository/UserRepository.php on line 87
+[07-Aug-2026 11:46:38 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[22007]: Invalid datetime format: 1366 Incorrect integer value: '' for column `artist_site`.`auth_attempts`.`is_success` at row 1 in /var/www/html/app/Repository/UserRepository.php:87
+Stack trace:
+#0 /var/www/html/app/Repository/UserRepository.php(87): PDOStatement->execute(Array)
+#1 /var/www/html/auth/handler/authHandler.php(38): App\Repository\UserRepository->updateCounterAttempts('user@example.co...', '172.18.0.1', false)
+#2 {main}
+  thrown in /var/www/html/app/Repository/UserRepository.php on line 87
+[07-Aug-2026 11:46:41 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[22007]: Invalid datetime format: 1366 Incorrect integer value: '' for column `artist_site`.`auth_attempts`.`is_success` at row 1 in /var/www/html/app/Repository/UserRepository.php:87
+Stack trace:
+#0 /var/www/html/app/Repository/UserRepository.php(87): PDOStatement->execute(Array)
+#1 /var/www/html/auth/handler/authHandler.php(38): App\Repository\UserRepository->updateCounterAttempts('user@example.co...', '172.18.0.1', false)
+#2 {main}
+  thrown in /var/www/html/app/Repository/UserRepository.php on line 87
+[07-Aug-2026 11:47:18 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[22007]: Invalid datetime format: 1366 Incorrect integer value: '' for column `artist_site`.`auth_attempts`.`is_success` at row 1 in /var/www/html/app/Repository/UserRepository.php:87
+Stack trace:
+#0 /var/www/html/app/Repository/UserRepository.php(87): PDOStatement->execute(Array)
+#1 /var/www/html/auth/handler/authHandler.php(38): App\Repository\UserRepository->updateCounterAttempts('user@example.co...', '172.18.0.1', false)
+#2 {main}
+  thrown in /var/www/html/app/Repository/UserRepository.php on line 87
+[07-Aug-2026 11:47:34 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[22007]: Invalid datetime format: 1366 Incorrect integer value: '' for column `artist_site`.`auth_attempts`.`is_success` at row 1 in /var/www/html/app/Repository/UserRepository.php:87
+Stack trace:
+#0 /var/www/html/app/Repository/UserRepository.php(87): PDOStatement->execute(Array)
+#1 /var/www/html/auth/handler/authHandler.php(38): App\Repository\UserRepository->updateCounterAttempts('user@example.co...', '172.18.0.1')
+#2 {main}
+  thrown in /var/www/html/app/Repository/UserRepository.php on line 87
+[07-Aug-2026 11:47:36 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[22007]: Invalid datetime format: 1366 Incorrect integer value: '' for column `artist_site`.`auth_attempts`.`is_success` at row 1 in /var/www/html/app/Repository/UserRepository.php:87
+Stack trace:
+#0 /var/www/html/app/Repository/UserRepository.php(87): PDOStatement->execute(Array)
+#1 /var/www/html/auth/handler/authHandler.php(38): App\Repository\UserRepository->updateCounterAttempts('user@example.co...', '172.18.0.1')
+#2 {main}
+  thrown in /var/www/html/app/Repository/UserRepository.php on line 87
+[07-Aug-2026 11:47:38 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[22007]: Invalid datetime format: 1366 Incorrect integer value: '' for column `artist_site`.`auth_attempts`.`is_success` at row 1 in /var/www/html/app/Repository/UserRepository.php:87
+Stack trace:
+#0 /var/www/html/app/Repository/UserRepository.php(87): PDOStatement->execute(Array)
+#1 /var/www/html/auth/handler/authHandler.php(38): App\Repository\UserRepository->updateCounterAttempts('user@example.co...', '172.18.0.1')
+#2 {main}
+  thrown in /var/www/html/app/Repository/UserRepository.php on line 87

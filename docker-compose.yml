@@ -19,7 +19,12 @@ services:
         restart: always
         environment:
             MARIADB_ROOT_PASSWORD: "${DB_PASS}"
+            MARIADB_DATABASE: "${DB_NAME}"
+            MARIADB_USER: "${DB_USER}"
+            MARIADB_PASSWORD: "${DB_PASS}"
             TZ: Asia/Yekaterinburg
+        volumes:
+            - db_data:/var/lib/mysql
 
     adminer:
         image: adminer
@@ -33,3 +38,6 @@ services:
         ports:
             - 8025:8025
             - 1025:1025
+
+volumes:
+    db_data:

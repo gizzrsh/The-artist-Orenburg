@@ -13,6 +13,9 @@ unset($_SESSION['active_tab']);
     <main class="main">
         <section class="auth">
             <div class="auth__inner container" id="tabsContainer" data-active-tab="<?php echo htmlspecialchars($active_tab); ?>">
+                <?php if (!empty($_SESSION['errors']['auth_limit'])): ?>
+                    <span class="form-error-border"><?= htmlspecialchars($_SESSION['errors']['auth_limit']) ?></span>
+                <?php endif; ?>
                 <div class="auth__tabs">
                     <button id="auth-tab" class="auth__tab" data-tab="login">Вход</button>
                     <button id="register-tab" class="auth__tab" data-tab="register">Регистрация</button>
@@ -42,6 +45,7 @@ unset($_SESSION['active_tab']);
                         </div>
                         <?php if (!empty($_SESSION['errors']['auth'])): ?>
                             <span class="form-error"><?= htmlspecialchars($_SESSION['errors']['auth']) ?></span>
+                            <?php unset($_SESSION['errors']) ?>
                         <?php endif; ?>
                         <?php if (!empty($_SESSION['success'])): ?>
                             <span class="form-success"><?= htmlspecialchars($_SESSION['success']) ?></span>

@@ -845,6 +845,17 @@ input:focus-visible {
     font-size: var(--fs-small);
     color: var(--color-error);
 }
+.form-error-border {
+    display: block;
+    width: 100%;
+    font-size: var(--fs-small);
+    color: var(--color-error);
+    border: 1px solid var(--color-error);
+    border-radius: var(--radius-sm);
+    padding: 1rem;
+    margin-bottom: var(--space-5);
+    margin-top: var(--space-1);
+}
 .form-success {
     display: block;
     margin-top: var(--space-1);
